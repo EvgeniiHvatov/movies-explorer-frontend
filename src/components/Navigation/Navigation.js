@@ -1,3 +1,4 @@
+import './Navigation.css';
 import { NavLink, Route, Routes } from 'react-router-dom';
 
 function Navigation() {

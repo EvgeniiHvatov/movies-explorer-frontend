@@ -1,9 +1,10 @@
+import './Portfolio.css';
 import { NavLink } from 'react-router-dom';
 import arrow from '../../images/arrow.svg';
 
 function Portfolio() {
   return (
-    <section className="portfolio">
+    <section className="portfolio main__portfolio">
       <h2 className="portfolio__title">Портфолио</h2>
       <ul className="portfolio__projects">
         <li className="portfolio__project">
@@ -24,7 +25,7 @@ function Portfolio() {
         <li className="portfolio__project">
           <NavLink
             className="portfolio__link"
-            to="https://github.com/EvgeniiHvatov/russian-travel"
+            to="https://evgeniihvatov.github.io/russian-travel/"
             target="_blank"
             rel="noreferrer"
           >
@@ -38,8 +39,8 @@ function Portfolio() {
         </li>
         <li className="portfolio__project">
           <NavLink
-            className="portfolio__link hover-link"
-            to="https://github.com/EvgeniiHvatov/react-mesto-auth"
+            className="portfolio__link"
+            to="https://evgeniihvatov.github.io/react-mesto-auth/"
             target="_blank"
             rel="noreferrer"
           >

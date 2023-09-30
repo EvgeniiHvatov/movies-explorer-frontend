@@ -1,7 +1,6 @@
 .about-project {
+  max-width: 1140px;
   box-sizing: border-box;
-  min-height: 608px;
-  margin: 0 70px 0 70px;
   background-color: #fff;
 }
 
@@ -10,9 +9,9 @@
   font-size: 22px;
   line-height: 1.23;
   letter-spacing: -0.04em;
-  padding: 110px 610px 23px 0;
-  border-bottom: 1px solid #000;
+  padding: 0 0 23px 0;
   margin: 0;
+  border-bottom: 1px solid #000;
 }
 
 .about-project__list {
@@ -20,7 +19,7 @@
   list-style: none;
   padding: 0;
   margin: 70px 0 110px;
-  gap: 40px;
+  gap: 50px;
 }
 
 .about-project__list-item {
@@ -31,6 +30,8 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 1.21;
+  letter-spacing: -0.04em;
+  margin: 0;
 }
 
 .about-project__text {
@@ -40,7 +41,6 @@
 }
 
 .about-project__timeline {
-  margin: 0;
   display: grid;
   grid-template-columns: minmax(228px, 1fr) 4fr;
   grid-template-rows: 36px 31px;
@@ -48,12 +48,12 @@
 
 .about-project__line-segment {
   display: flex;
-  margin: 0;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.21;
   justify-content: center;
   align-items: center;
+  margin: 0;
 }
 
 .about-project__line-segment_type_short {
@@ -70,4 +70,65 @@
   line-height: 1.21;
   text-align: center;
   color: #a0a0a0;
+  margin: 14px 0 0 0;
+}
+
+@media screen and (max-width: 1023px) {
+  .about-project {
+    max-width: 768px;
+  }
+
+  .about-project__list {
+    margin: 70px 0 93px;
+    gap: 30px;
+  }
+
+  .about-project__text {
+    margin: 22px 0 0;
+    font-size: 12px;
+  }
+
+  .about-project__timeline {
+    grid-template-columns: minmax(140px, 1fr) 4fr;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+  .about-project__main-title {
+    font-size: 18px;
+    line-height: 1.21;
+    padding: 0 0 28px 0;
+  }
+
+  .about-project__list {
+    flex-wrap: wrap;
+    margin: 60px 0;
+    gap: 56px;
+  }
+
+  .about-project__title {
+    font-size: 18px;
+  }
+
+  .about-project__text {
+    margin: 16px 0 0;
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .about-project__timeline {
+    grid-template-columns: minmax(100px, 1fr) 4fr;
+  }
+
+  .about-project__line-segment {
+    font-size: 11px;
+  }
+
+  .about-project__part {
+    font-weight: 400;
+    font-size: 11px;
+    margin: 10px 0 0 0;
+  }
+
 }

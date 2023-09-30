@@ -1,3 +1,4 @@
+import './Promo.css';
 import landingLogo from '../../images/landing-logo.svg';
 
 function Promo() {

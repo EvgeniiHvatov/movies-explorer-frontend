@@ -1,9 +1,10 @@
+import './AboutMe.css';
 import { NavLink } from 'react-router-dom';
 import avatar from '../../images/avatar.jpg';
 
 function AboutMe() {
   return (
-    <section className="about-me">
+    <section className="about-me main__about-me">
       <h2 className="about-me__title">Студент</h2>
 
       <div className="about-me-info">
@@ -15,7 +16,7 @@ function AboutMe() {
           <p className="about-me-info__description">
             Я родился и живу в Санкт-Петербурге, закончил Санкт-Петербургский политехнический университет.
             Работаю бухгалтером. В последующие годы планирую развиваться в информационных технологиях, в том числе разработкой интернет сайтов.
-            Веб&#8209;разработкой увлекся при прохождении курса на&nbsp;платформе Яндекс.Практикум.
+            Веб разработкой заинтересовался 10 месяцев назад.
           </p>
           <NavLink
             className="about-me-info__link"

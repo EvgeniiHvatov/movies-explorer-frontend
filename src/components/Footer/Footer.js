@@ -1,3 +1,4 @@
+import './Footer.css';
 import { Routes, Route, NavLink } from 'react-router-dom';
 
 function Footer() {
@@ -86,7 +87,7 @@ function Footer() {
               Учебный проект Яндекс.Практикум х BeatFilm.
             </h4>
             <div className="footer__wrapper">
-              <p className="footer__texts"> &copy; 2023</p>
+              <p className="footer__text"> &copy; 2023</p>
               <ul className="footer__links">
                 <li className="footer__item">
                   <NavLink

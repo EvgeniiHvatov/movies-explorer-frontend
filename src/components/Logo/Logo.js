@@ -1,3 +1,4 @@
+import './Logo.css';
 import { Link } from 'react-router-dom';
 import headerLogo from '../../images/header-logo.svg';
 
@@ -10,7 +11,7 @@ function Logo() {
       <img
         src={headerLogo}
         alt="Логотип"
-        className="logo__img hover-button"
+        className="logo__img"
       ></img>
     </Link>
   );
