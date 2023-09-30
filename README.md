@@ -23,6 +23,9 @@
 5. Mongoose
 6. ESlint
 
+## Название макета
+- Light-1
+
 ## Ссылки на сайт (Яндекс.Облако)
 - Public IP Address: `158.160.99.63`
 - Frontend: `filmspb.nomoredomainsicu.ru`
