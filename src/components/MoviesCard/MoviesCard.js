@@ -27,9 +27,9 @@ function MoviesCard(props) {
       <div className="movie__header">
         <h2 className="movie__title">{props.card.nameRU}</h2>
         {location.pathname === "/saved-movies" ?
-          <button className="movie__remove"/>
+          <button className="movie__remove" type="button"/>
           :
-          <button onClick={handleCardLike} className={`movie__like ${isLiked ? "movie__like_active" : ""}`}/>
+          <button onClick={handleCardLike} type="button" className={`movie__like ${isLiked ? "movie__like_active" : ""}`}/>
         }
       </div>
       <p className="movie__duration">{getTimeFromMins(props.card.duration)}</p>
