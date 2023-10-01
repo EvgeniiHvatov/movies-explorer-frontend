@@ -48,3 +48,22 @@
 .navigation__button_signup:hover {
   opacity: .7;
 }
+
+@media screen and (max-width: 1023px) {
+
+}
+
+@media screen and (max-width: 767px) {
+  .navigation__button_signin  {
+    padding: 6px 12px;
+  }
+
+  .navigation__button {
+    font-size: 10px;
+    line-height: 1.6;
+    }
+
+  .navigation__button:first-of-type {
+    margin: 0 15px 0 auto;
+  }
+}

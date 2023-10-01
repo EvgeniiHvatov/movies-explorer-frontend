@@ -3,7 +3,7 @@ import { NavLink, Route, Routes } from 'react-router-dom';
 
 function Navigation() {
   return (
-    <section className="navigation">
+    <nav className="navigation">
       <Routes>
         <Route
           exact
@@ -26,7 +26,7 @@ function Navigation() {
           }
         ></Route>
       </Routes>
-    </section>
+    </nav>
   );
 }
 

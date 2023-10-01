@@ -5,7 +5,7 @@ import Navigation from '../Navigation/Navigation';
 import NavBar from '../NavBar/NavBar';
 
 function Header() {
-  const loggedIn = true;
+  const loggedIn = false;
 
   return (
     <Routes>

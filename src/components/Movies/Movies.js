@@ -6,11 +6,11 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 function Movies({list}) {
 
   return (
-    <section className="movies">
-      <SearchForm />
-      {/* <Preloader /> */}
-      <MoviesCardList list={list} />
-    </section>
+      <main className="movies">
+        <SearchForm />
+        {/* <Preloader /> */}
+        <MoviesCardList list={list} />
+      </main>
   );
 };
 

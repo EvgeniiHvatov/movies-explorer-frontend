@@ -10,7 +10,7 @@ function Portfolio() {
         <li className="portfolio__project">
           <NavLink
             className="portfolio__link"
-            to="https://github.com/EvgeniiHvatov/how-to-learn"
+            to="https://evgeniihvatov.github.io/how-to-learn/"
             target="_blank"
             rel="noreferrer"
           >

@@ -71,10 +71,12 @@
 @media screen and (max-width: 1023px) {
   .about-me__title {
     line-height: 1.21;
+    padding-bottom: 25px;
   }
 
   .about-me-info__text {
-    margin: 0 100px 0 0;
+    max-width: 364px;
+    margin: 0 50px 0 0;
   }
 
   .about-me-info__title {

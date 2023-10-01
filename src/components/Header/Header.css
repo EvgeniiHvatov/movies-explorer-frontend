@@ -20,12 +20,20 @@
 
 @media screen and (max-width: 1023px) {
   .header {
+    padding: 18px 30px;
+  }
+
+  .header_type_movies {
+    padding: 15px 30px;
+  }
+
+  .header_type_profile {
     padding: 15px 30px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .header {
-    padding: 14px 14px;
+    padding: 18px 14px;
   }
 }

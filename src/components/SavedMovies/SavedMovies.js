@@ -7,14 +7,14 @@ function SavedMovies({list}) {
   const moviesFilter = list.filter((item) => !item.owner);
 
   return (
-    <section className="saved-movies">
+    <main className="saved-movies">
       <SearchForm />
       {/* <Preloader /> */}
       <MoviesCardList
       list={moviesFilter}
       savedmovies={true}
       />
-    </section>
+    </main>
   );
 };
 

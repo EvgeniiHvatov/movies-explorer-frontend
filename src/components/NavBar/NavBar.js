@@ -10,8 +10,7 @@ function NavBar({loggedIn}) {
   return (
     <>
       <div className="navbar">
-        <div className="navbar__hamburger-overlay" onClick={handleMenuOpening}>
-        </div>
+        <button className="navbar__hamburger-overlay" type="button" onClick={handleMenuOpening}></button>
 
         <section className="navbar__menu">
           <ul className="navbar__menu-list">
@@ -44,32 +43,32 @@ function NavBar({loggedIn}) {
         <section className="drop-down-menu">
           <div className="drop-down-menu__container">
             <button className="drop-down-menu-close-btn" type="button" onClick={handleMenuClosing}></button>
-            <ul className="navbar__menu-list">
-              <li className="navbar__menu-list-item">
+            <ul className="drop-down-menu__menu-list">
+              <li className="drop-down-menu__menu-list-item">
                 <NavLink
-                  className="navbar__menu-link"
+                  className="drop-down-menu__menu-link"
                   onClick={handleMenuClosing}
                   to="/">Главная
                 </NavLink>
               </li>
-              <li className="navbar__menu-list-item">
+              <li className="drop-down-menu__menu-list-item">
                 <NavLink
-                  className="navbar__menu-link"
+                  className="drop-down-menu__menu-link"
                   onClick={handleMenuClosing}
                   to="/movies">Фильмы
                 </NavLink>
               </li>
-              <li className="navbar__menu-list-item">
+              <li className="drop-down-menu__menu-list-item">
                 <NavLink
-                  className="navbar__menu-link"
+                  className="drop-down-menu__menu-link"
                   onClick={handleMenuClosing}
                   to="/saved-movies">Сохранённые фильмы
                 </NavLink>
               </li>
             </ul>
-            <div className="navbar__menu-account">
+            <div className="drop-down-menu__menu-account">
               <NavLink
-                className="navbar__menu-account-link"
+                className="drop-down-menu__menu-account-link"
                 onClick={handleMenuClosing}
                 to="/profile">Аккаунт
               </NavLink>
