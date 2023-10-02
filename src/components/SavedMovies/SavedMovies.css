@@ -1,0 +1,19 @@
+.saved-movies {
+  max-width: 1140px;
+  margin: 0 auto;
+  margin-bottom: 230px; /*временное решение, не понятно, нужна ли кнопка "еще" на странице saved-movies*/
+}
+
+@media screen and (max-width: 1023px) {
+  .saved-movies {
+    max-width: 768px;
+    margin-bottom: 140px; /*временное решение, не понятно, нужна ли кнопка "еще" на странице saved-movies*/
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .saved-movies {
+    max-width: 320px;
+    /* margin-bottom: 140px; временное решение, не понятно, нужна ли кнопка "еще" на странице saved-movies */
+  }
+}

@@ -1,0 +1,25 @@
+.app__container {
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+}
+
+@media screen and (max-width: 1140px) {
+  .app__container {
+    max-width: 900px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .app__container {
+    max-width: 768px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .app__container {
+    max-width: 320px;
+  }
+}

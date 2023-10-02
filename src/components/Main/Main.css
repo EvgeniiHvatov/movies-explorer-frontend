@@ -1,0 +1,59 @@
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.main__about-project{
+  margin: 110px 70px 110px 70px;
+}
+
+.main__techs {
+  padding: 100px 70px;
+}
+
+.main__about-me {
+  margin: 0 70px 0 70px;
+  padding: 110px 0 101px 0;
+}
+
+.main__portfolio {
+  margin: 0 70px 125px;
+}
+
+@media screen and (max-width: 1023px) {
+  .main__about-project{
+    margin: 90px 50px 90px 50px;
+  }
+  
+  .main__techs {
+    padding: 90px 50px;
+  }
+  
+  .main__about-me {
+    margin: 0 50px 0 50px;
+    padding: 90px 0 91px 0;
+  }
+  
+  .main__portfolio {
+    margin: 0 50px 90px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main__about-project{
+    margin: 70px 18px 69px 18px;
+  }
+  
+  .main__techs {
+    padding: 63px 18px 70px;
+  }
+  
+  .main__about-me {
+    margin: 0 14px 0 14px;
+    padding: 70px 0 70px 0;
+  }
+  
+  .main__portfolio {
+    margin: 0 14px 70px;
+  }
+}

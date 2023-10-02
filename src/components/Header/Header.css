@@ -1,0 +1,39 @@
+.header {
+  max-width: 1280px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 70px;
+  margin: 0;
+}
+
+.header_type_landing {
+  background-color: #073042;
+  color: #fff;
+}
+
+@media screen and (max-width: 1140px) {
+  .header {
+    max-width: 900px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .header {
+    padding: 18px 30px;
+  }
+
+  .header_type_movies {
+    padding: 15px 30px;
+  }
+
+  .header_type_profile {
+    padding: 15px 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    padding: 18px 14px;
+  }
+}
