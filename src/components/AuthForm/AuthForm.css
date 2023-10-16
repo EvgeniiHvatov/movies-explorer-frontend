@@ -26,11 +26,16 @@
   font-size: 10px;
   line-height: 1.21;
   color: #A0A0A0;
+  margin: 12px 0;
+}
+
+.auth__label:first-child {
+  margin-top: 1px;
 }
 
 .auth__input {
   width: 100%;
-  height: 28px;
+  height: 32px;
   box-sizing: border-box;
   position: relative;
   font-weight: 500;
@@ -41,11 +46,10 @@
   border: 0;
   border-bottom: 1px solid #E8E8E8;
   padding: 0;
-  margin-bottom: 29px;
 }
 
 .auth__input:invalid {
-  color: red;
+  color: #EE3465;
 }
 
 .auth__input:focus {
@@ -54,18 +58,18 @@
 }
 
 .auth__input-error {
-  display: block;
-  position: absolute;
+  display: none;
   font-weight: 400;
   font-size: 10px;
   line-height: 1.21;
   color: #EE3465;
-  margin-top: 190px;
-  margin-left: 0px;
+  padding: 6px 0;
+  min-height: 9px;
+  margin-left: 0;
 }
 
-.auth__input-error_default {
-  display: none;
+.auth__input-error_show {
+  display: block;
 }
 
 .auth__submit-button {
@@ -77,12 +81,23 @@
   background: #3456F3;
   border: none;
   border-radius: 3px;
-  margin-top: 128px;
   cursor: pointer;
 }
 
-.auth__submit-button_reg {
-  margin-top: 196px;
+.auth__submit-button_disabled {
+  background-color: transparent;
+  color: #000;
+  cursor: default;
+  pointer-events: none;
+  opacity: .2;
+}
+
+.auth__submit-button_signup {
+  margin-top: 119px;
+}
+
+.auth__submit-button_signin {
+  margin-top: 187px;
 }
 
 .auth__submit-button:hover {
@@ -126,13 +141,8 @@
     font-weight: 400;
   }
 
-  .auth__submit-button {
-    margin-top: 127px;
-    margin-bottom: 0px;
-  }
-
-  .auth__submit-button_reg {
-    margin-top: 197px;
+  .auth__submit-button_signin {
+    margin-top: 187px;
   }
 
   .auth__text {
@@ -160,11 +170,14 @@
     width: 260px;
     font-size: 12px;
     line-height: 1.25;
-    margin-top: 216px;
   }
 
-  .auth__submit-button_reg {
-    margin-top: 285px;
+  .auth__submit-button_signup {
+    margin-top: 194px;
+  }
+
+  .auth__submit-button_signin {
+    margin-top: 263px;
   }
 
   .auth__text {

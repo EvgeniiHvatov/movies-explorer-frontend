@@ -4,11 +4,15 @@ import { Routes, Route } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import NavBar from '../NavBar/NavBar';
 
-function Header() {
-  const loggedIn = false;
-
+function Header({ loggedIn }) {
   return (
     <Routes>
+      <Route
+        exact
+        path="*"
+        element=""
+      ></Route>
+
       <Route
         exact
         path="/"
@@ -22,17 +26,17 @@ function Header() {
 
       <Route
         exact
-        path="/movies/*"
+        path="/movies"
         element={
           <header className="header header_type_movies">
             <Logo />
-            <NavBar />
+            {loggedIn ? (<NavBar/>) : (<Navigation />)}
           </header>
         }
       ></Route>
       <Route
         exact
-          path="/saved-movies/*"
+          path="/saved-movies"
           element={
             <header className="header header_type_movies">
               <Logo />

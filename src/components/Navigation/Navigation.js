@@ -1,7 +1,8 @@
 import './Navigation.css';
-import { NavLink, Route, Routes } from 'react-router-dom';
+import { NavLink, Route, Routes, useLocation } from 'react-router-dom';
 
 function Navigation() {
+  const { pathname } = useLocation();
   return (
     <nav className="navigation">
       <Routes>
@@ -12,7 +13,7 @@ function Navigation() {
             <div className="navigation__link">
               <NavLink
                 to="/signup"
-                className="navigation__button navigation__button_signup"
+                className={`navigation__button navigation__button_signup ${pathname !== "/" && 'navigation__button_type_black'}`}
               >
                 Регистрация
               </NavLink>

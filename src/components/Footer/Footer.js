@@ -43,7 +43,7 @@ function Footer() {
 
       <Route
         exact
-        path="/movies/*"
+        path="/movies"
         element={
           <footer className="footer">
             <h4 className="footer__title">
@@ -80,7 +80,7 @@ function Footer() {
 
       <Route
         exact
-        path="/saved-movies/*"
+        path="/saved-movies"
         element={
           <footer className="footer">
             <h4 className="footer__title">

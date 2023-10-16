@@ -1,26 +1,37 @@
 import './Profile.css';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useContext, useEffect, useRef } from 'react';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
+import useFormWithValidation from '../../hooks/useFormWithValidation';
+import { NAME_REG_EXP, EMAIL_REG_EXP } from "../../utils/constants.js";
 
-function Profile() {
-  // временные значения
-  const userName = "Виталий";
-  const [name, setName] = useState(userName);
-  const [email, setEmail] = useState('pochta@yandex.ru');
+function Profile({ onLogout, handleUpdateUser }) {
+  const currentUser = useContext(CurrentUserContext);
+  const [isSameUserData, setIsSameUserData] = useState(false);
+  const nameRef = useRef(false);
+  const emailRef = useRef(false);
 
-  function handleChangeName(e) {
-    setName(e.target.value);
-  }
+  const { values, handleChange, isValid } = useFormWithValidation({
+    name: nameRef.current.value,
+    email: emailRef.current.value
+  });
 
-  function handleChangeEmail(e) {
-    setEmail(e.target.value);
+  useEffect(() => {
+    setIsSameUserData(nameRef.current.value === currentUser.name && emailRef.current.value === currentUser.email);
+  }, [values.name, values.email, currentUser.name, currentUser.email]);
+
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    const name = nameRef.current.value;
+    const email = emailRef.current.value;
+    handleUpdateUser(name, email);
+    evt.target.reset()
   }
 
   return (
     <main className="main">
       <section className="profile">
-        <h1 className="profile__title">{`Привет, ${userName}!`}</h1>
-        <form className="profile__form">
+        <h1 className="profile__title">Привет, {currentUser.name}!</h1>
+        <form className="profile__form" onSubmit={handleSubmit} noValidate>
           <label className="profile__label">
             Имя
             <input
@@ -29,11 +40,13 @@ function Profile() {
               type="text"
               className="profile__input"
               minLength="2"
-              maxLength="40"
+              maxLength="30"
               placeholder="Введите имя"
               required
-              value={name || ""}
-              onChange={handleChangeName}
+              pattern={NAME_REG_EXP}
+              defaultValue={currentUser.name}
+              ref={nameRef}
+              onChange={handleChange}
             />
             <span className="profile__input-error"></span>
           </label>
@@ -45,34 +58,36 @@ function Profile() {
               type="email"
               placeholder="Введите email"
               className="profile__input"
-              minLength="4"
-              maxLength="40"
               required
-              value={email || ""}
-              onChange={handleChangeEmail}
+              defaultValue={currentUser.email}
+              ref={emailRef}
+              onChange={handleChange}
+              pattern={EMAIL_REG_EXP}
             />
             <span className="profile__input-error"></span>
           </label>
+          {!isSameUserData 
+          ? 
+            (<button
+              className="profile__button profile__button_type_change"
+              type="submit"
+            >Сохранить
+            </button>)
+          :
+            (<button
+              className="profile__button profile__button_type_edit"
+              type="submit"
+              disabled={isSameUserData}
+            >Редактировать
+            </button>)
+          }
+          <button
+            className={`profile__button profile__button_type_logout ${!isSameUserData && "profile__button_hidden"}`}
+            type="submit"
+            onClick={onLogout}
+          >Выйти из аккаунта
+          </button>
         </form>
-
-        <button
-          className="profile__button profile__button_type_change"
-          type="submit"
-        >
-          Редактировать
-        </button>
-
-        <button
-          className="profile__button profile__button_type_logout"
-          type="submit"
-        >
-          <Link
-            className="profile__button-link"
-            to="/"
-          >
-            Выйти из аккаунта
-          </Link>
-        </button>
       </section>
     </main>
   );

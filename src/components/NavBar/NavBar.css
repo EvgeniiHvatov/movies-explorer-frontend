@@ -145,6 +145,10 @@
     opacity: 0.8;
   }
 
+  .navbar__hamburger-overlay_type_light{
+    background-image: url(../../images/humb_menu_white.svg);
+  }
+
   .drop-down-menu {
     display: block;
     position: fixed;

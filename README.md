@@ -26,7 +26,10 @@
 ## Название макета
 - Light-1
 
+## Ссылка на pull requests
+
+
 ## Ссылки на сайт (Яндекс.Облако)
-- Public IP Address: `158.160.99.63`
+- Public IP Address: `84.201.134.123`
 - Frontend: `filmspb.nomoredomainsicu.ru`
 - Backend: `api.filmspb.nomoredomainsicu.ru`
