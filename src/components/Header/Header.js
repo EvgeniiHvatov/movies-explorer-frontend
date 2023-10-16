@@ -40,7 +40,7 @@ function Header({ loggedIn }) {
           element={
             <header className="header header_type_movies">
               <Logo />
-              <NavBar />
+              {loggedIn ? (<NavBar/>) : (<Navigation />)}
             </header>
           }
       ></Route>
@@ -50,7 +50,7 @@ function Header({ loggedIn }) {
         element={
           <header className="header header_type_profile">
             <Logo />
-            <NavBar />
+            {loggedIn ? (<NavBar/>) : (<Navigation />)}
           </header>
         }
       ></Route>
