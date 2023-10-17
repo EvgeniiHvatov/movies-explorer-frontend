@@ -2,7 +2,7 @@ import './Profile.css';
 import { useState, useContext, useEffect, useRef } from 'react';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
-import { NAME_REG_EXP, EMAIL_REG_EXP } from "../../utils/constants.js";
+import { NAME_REG_EXP} from "../../utils/constants.js";
 
 function Profile({ onLogout, handleUpdateUser }) {
   const currentUser = useContext(CurrentUserContext);
@@ -10,7 +10,7 @@ function Profile({ onLogout, handleUpdateUser }) {
   const nameRef = useRef(false);
   const emailRef = useRef(false);
 
-  const { values, handleChange, isValid } = useFormWithValidation({
+  const { values, handleChange, isValid, errors } = useFormWithValidation({
     name: nameRef.current.value,
     email: emailRef.current.value
   });
@@ -23,7 +23,7 @@ function Profile({ onLogout, handleUpdateUser }) {
     evt.preventDefault();
     const name = nameRef.current.value;
     const email = emailRef.current.value;
-    handleUpdateUser(name, email);
+    handleUpdateUser(name, email)
     evt.target.reset()
   }
 
@@ -48,7 +48,7 @@ function Profile({ onLogout, handleUpdateUser }) {
               ref={nameRef}
               onChange={handleChange}
             />
-            <span className="profile__input-error"></span>
+            <span className="profile__input-error">{errors.name}</span>
           </label>
           <label className="profile__label">
             E-mail
@@ -62,27 +62,27 @@ function Profile({ onLogout, handleUpdateUser }) {
               defaultValue={currentUser.email}
               ref={emailRef}
               onChange={handleChange}
-              pattern={EMAIL_REG_EXP}
             />
-            <span className="profile__input-error"></span>
+            <span className="profile__input-error">{errors.email}</span>
           </label>
-          {!isSameUserData 
-          ? 
+          {!isSameUserData
+          ?
             (<button
               className="profile__button profile__button_type_change"
               type="submit"
+              disabled={!isValid}
             >Сохранить
             </button>)
           :
             (<button
               className="profile__button profile__button_type_edit"
               type="submit"
-              disabled={isSameUserData}
+              disabled={isSameUserData }
             >Редактировать
             </button>)
           }
           <button
-            className={`profile__button profile__button_type_logout ${!isSameUserData && "profile__button_hidden"}`}
+            className={`profile__button profile__button_type_logout ${(!isSameUserData) && "profile__button_hidden"}`}
             type="submit"
             onClick={onLogout}
           >Выйти из аккаунта

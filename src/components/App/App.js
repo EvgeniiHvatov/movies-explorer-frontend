@@ -13,7 +13,6 @@ import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import MainApi from '../../utils/MainApi';
-import MoviesApi from '../../utils/MoviesApi';
 
 function App() {
   const { pathname } = useLocation();
@@ -26,10 +25,9 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       setIsLoading(true);
-      Promise.all([MainApi.getUserInfo(), MainApi.getMovies(), MoviesApi.getAllMovies()])
-        .then(([userInfo, savedMovies, allMovies]) => {
+      Promise.all([MainApi.getUserInfo(), MainApi.getMovies(),])
+        .then(([userInfo, savedMovies]) => {
           setCurrentUser(userInfo);
-          localStorage.setItem('allMovies', JSON.stringify(allMovies))
           localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
           setSavedMovies(savedMovies)
         })
@@ -74,7 +72,7 @@ function App() {
   }
 
   function onRegister(data) {
-    MainApi
+    return MainApi
       .registerUser(data)
       .then (res => {
         if (res) {
@@ -84,6 +82,7 @@ function App() {
           });
           console.log(`Регистрация прошла успешно!`);
         }
+        return true;
       })
       .catch(err => {
         if (409) {
@@ -91,11 +90,12 @@ function App() {
         } else {
           alert(`Ошибка регистрации: ${err}`);
         }
+        return false;
       });
   };
 
   function onLogin(data) {
-    MainApi
+    return MainApi
       .loginUser(data)
       .then(({ token }) => {
         if (token) {
@@ -105,6 +105,7 @@ function App() {
           getUserInfo();
           alert(`Вы успешно вошли в систему!`);
           navigate('/movies');
+          return true;
         }
       })
       .catch(err => {
@@ -112,6 +113,7 @@ function App() {
           alert('Указан неверный email или пароль.');
         } else {
           alert(`Ошибка авторизации: ${err}`);
+          return false;
         }
       });
   };
@@ -153,6 +155,7 @@ function App() {
       .updateUserInfo(name, email)
       .then((data) => {
         setCurrentUser(data);
+        alert('Данные успешно обновлены!');
       })
       .catch(err => {
         console.log(`При редактировании профиля что-то пошло не так. Ошибка: ${err}`);
@@ -164,7 +167,7 @@ function App() {
     <div className="app">
       <div className="app__container">
         {pathname === "/signin" || pathname === "/signup" ? "" : <Header loggedIn={loggedIn} />}
-       
+
         <Routes>
           <Route exact path="/" element={<Main />} />
           <Route path="/movies" element={<ProtectedRoute component={Movies} loggedIn={loggedIn} isLoading={isLoading} savedMovies={savedMovies} onSaveMovies={onSaveMovies} onDeleteMovie={onDeleteMovie}/>}/>

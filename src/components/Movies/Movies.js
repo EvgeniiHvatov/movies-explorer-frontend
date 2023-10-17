@@ -18,8 +18,11 @@ import {
   WINDOW_WIDTH_CUTOFF_M,
   WINDOW_WIDTH_CUTOFF_S
 } from "../../utils/constants.js";
+import MoviesApi from "../../utils/MoviesApi";
+import Preloader from "../Preloader/Preloader";
 
 function Movies({ savedMovies, onSaveMovies, onDeleteMovie, loggedIn }) {
+  const [movies, setMovies] = useState([]);
   const { pathname } = useLocation();
   const [foundMovies, setFoundMovies] = useState([]);
   const [keyword, setKeyword] = useState("");
@@ -43,18 +46,30 @@ function Movies({ savedMovies, onSaveMovies, onDeleteMovie, loggedIn }) {
     }
   }, [pathname === "/movies"]);
 
-  function handleSearch(value) {
-    const serverMovies = JSON.parse(localStorage.getItem("allMovies"));
-
+  async function handleSearch(value) {
     if (value) {
+
       setKeyword(value);
       localStorage.setItem("keyword", value);
+
+    if(!movies.length) {
+      if (localStorage.getItem("allMovies")) {
+        setMovies(JSON.parse(localStorage.getItem("allMovies")));
+      } else {
+        await MoviesApi.getAllMovies().then((res) => {
+          localStorage.setItem("allMovies", JSON.stringify(res));
+          setMovies(res);
+        })
+      }
+    }
+
+    const serverMovies = JSON.parse(localStorage.getItem("allMovies"));
 
       const filteredMovies = serverMovies.filter((movie) =>
         movie.nameRU.toLowerCase().includes(value.toLowerCase())
       );
       localStorage.setItem("foundMovies", JSON.stringify(filteredMovies));
-      
+
       if (filteredMovies.length !== 0) {
         setSearchError("");
         setFoundMovies(filteredMovies);
@@ -94,9 +109,7 @@ function Movies({ savedMovies, onSaveMovies, onDeleteMovie, loggedIn }) {
   });
 
   const updateMedia = () => {
-    setTimeout(() => {
       setCurrentWidth(window.innerWidth);
-    }, 4000);
   };
 
   function countRenderedMovies(foundMovies) {
@@ -157,14 +170,15 @@ function Movies({ savedMovies, onSaveMovies, onDeleteMovie, loggedIn }) {
 
   return (
     <main className="movies">
-      <SearchForm 
+      <SearchForm
         keyword={keyword}
         handleSearch={handleSearch}
         toggleCheckbox={toggleCheckbox}
         isCheckboxOn={isCheckboxOn}
       />
+      {!movies.length && !renderedMovies.length && (keyword || isCheckboxOn) && < Preloader loggedIn={true} />}
       {!searchError && (
-        <MoviesCardList 
+        <MoviesCardList
           movies={renderedMovies}
           onSaveMovies={onSaveMovies}
           onDeleteMovie={onDeleteMovie}

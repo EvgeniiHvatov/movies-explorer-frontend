@@ -1,19 +1,17 @@
 import './SavedMovies.css';
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { SHORT_MOVIE_DURATION } from "../../utils/constants.js";
 
 function SavedMovies({ savedMovies,  onDeleteMovie }) {
-  const { pathname } = useLocation();
   const [foundMovies, setFoundMovies] = useState([]);
   const [searchError, setSearchError] = useState("");
   const [isCheckboxOn, setCheckboxOn] = useState(false);
 
   useEffect(() => {
     setFoundMovies(savedMovies);
-  }, [pathname, savedMovies]);
+  }, []);
 
   function handleSearch(value) {
     if (value) {
@@ -62,9 +60,14 @@ function SavedMovies({ savedMovies,  onDeleteMovie }) {
     setCheckboxOn(!isCheckboxOn);
   }
 
+  function onRemoveLike(id) {
+    onDeleteMovie(id);
+    setFoundMovies(foundMovies.filter((movie) => movie.movieId !== id));
+  }
+
   return (
     <main className="saved-movies">
-      <SearchForm 
+      <SearchForm
         toggleCheckbox={toggleCheckbox}
         handleSearch={handleSearch}
         isCheckboxOn={isCheckboxOn}
@@ -73,7 +76,7 @@ function SavedMovies({ savedMovies,  onDeleteMovie }) {
         <MoviesCardList
           movies={foundMovies}
           savedMovies={savedMovies}
-          onDeleteMovie={onDeleteMovie}
+          onDeleteMovie={onRemoveLike}
         />
       )}
       {searchError && <p className="saved-movies__error-message">{searchError}</p>}

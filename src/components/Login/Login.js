@@ -1,14 +1,26 @@
 import AuthForm from '../AuthForm/AuthForm';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
+import {useState} from "react";
 
 function Login({ onLogin }) {
   const { values, handleChange, errors, isValid, resetForm } =
   useFormWithValidation({});
+  const [isFetching, setIsFetching] = useState(false);
 
 function handleSubmit(evt) {
+  if(isFetching) {
+    return;
+  }
   evt.preventDefault();
-  onLogin(values);
-  resetForm();
+  setIsFetching(true);
+
+  onLogin(values).then(status => {
+    if(status) {
+      resetForm();
+    }
+  }).finally(() => {
+    setIsFetching(false);
+  })
 }
 
   return (
@@ -21,6 +33,7 @@ function handleSubmit(evt) {
     linkName="Регистрация"
     onSubmit={handleSubmit}
     isValid={isValid}
+    disabled={isFetching}
     >
       <label className="auth__label">
         E-mail
@@ -32,6 +45,7 @@ function handleSubmit(evt) {
           onChange={handleChange}
           value={values.email || ""}
           required
+          disabled={isFetching}
         />
         <span className={`auth__input-error ${errors.email ? "auth__input-error_show" : "" }`}>{errors.email}</span>
       </label>
@@ -46,6 +60,7 @@ function handleSubmit(evt) {
           maxLength="30"
           onChange={handleChange}
           value={values.password || ""}
+          disabled={isFetching}
           required
         />
         <span className={`auth__input-error ${errors.password ? "auth__input-error_show" : "" }`}>{errors.password}</span>

@@ -1,15 +1,26 @@
 import './Register.css';
 import AuthForm from '../AuthForm/AuthForm';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
+import {useState} from "react";
 
 function Register({ onRegister }) {
-  const { values, handleChange, errors, isValid, resetForm } =
-    useFormWithValidation({});
+  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation({});
+  const [isFetching, setIsFetching] = useState(false);
 
   function handleSubmit(evt) {
+
+    if(isFetching) {
+      return;
+    }
+    setIsFetching(true)
     evt.preventDefault();
-    onRegister(values);
-    resetForm();
+    onRegister(values).then(status => {
+      if(status) {
+        resetForm();
+      }
+    }).finally(() => {
+      setIsFetching(false);
+    })
   }
 
   return (
@@ -21,6 +32,7 @@ function Register({ onRegister }) {
       subtitle="Уже зарегистрированы?"
       linkName="Войти"
       onSubmit={handleSubmit}
+      disabled={isFetching}
       isValid={isValid}
     >
      <label className="auth__label">
@@ -35,6 +47,7 @@ function Register({ onRegister }) {
           maxLength="30"
           value={values.name || ""}
           onChange={handleChange}
+          disabled={isFetching}
           required
         />
         <span className={`auth__input-error ${errors.name ? "auth__input-error_show" : "" }`}>{errors.name}</span>
@@ -48,6 +61,7 @@ function Register({ onRegister }) {
           placeholder="Введите email"
           value={values.email || ""}
           onChange={handleChange}
+          disabled={isFetching}
           required
         />
         <span className={`auth__input-error ${errors.email ? "auth__input-error_show" : "" }`}>{errors.email}</span>
@@ -63,6 +77,7 @@ function Register({ onRegister }) {
           maxLength="30"
           value={values.password || ""}
           onChange={handleChange}
+          disabled={isFetching}
           required
         />
         <span className={`auth__input-error ${errors.password ? "auth__input-error_show" : "" }`}>{errors.password}</span>

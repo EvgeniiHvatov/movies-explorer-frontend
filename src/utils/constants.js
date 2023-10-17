@@ -3,8 +3,8 @@ export const EMAIL_REG_EXP = "(?!.*\\.\\.)(^[^\\.][^@\\s]+@[^@\\s]+\\.[^@\\s\\.]
 
 export const SHORT_MOVIE_DURATION = 40;
 
-export const MOVIES_TO_RENDER_L = 12;
-export const MOVIES_TO_RENDER_C = 9;
+export const MOVIES_TO_RENDER_L = 16;
+export const MOVIES_TO_RENDER_C = 12;
 export const MOVIES_TO_RENDER_M = 8;
 export const MOVIES_TO_RENDER_S = 5;
 

@@ -2,7 +2,7 @@ import '../AuthForm/AuthForm.css';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 
-function AuthForm({onSubmit, isValid, link, buttonText,linkName,title,subtitle,linkTo, ...props}) {
+function AuthForm({onSubmit, isValid, link, buttonText,linkName,title,subtitle,linkTo, disabled, ...props}) {
   const { pathname } = useLocation();
   const pageClass = pathname.replace('/', '');
 
@@ -14,7 +14,7 @@ function AuthForm({onSubmit, isValid, link, buttonText,linkName,title,subtitle,l
         <form className="auth__form" onSubmit={onSubmit}>
         <>{props.children}</>
           <button
-            className={`auth__submit-button auth__submit-button_${pageClass} ${!isValid && "auth__submit-button_disabled"}`}
+            className={`auth__submit-button auth__submit-button_${pageClass} ${(!isValid || disabled) && "auth__submit-button_disabled"}`}
             type="submit"
           >{buttonText}
           </button>
