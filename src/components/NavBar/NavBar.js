@@ -1,8 +1,9 @@
 import './NavBar.css';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 function NavBar({loggedIn}) {
+  const { pathname } = useLocation();
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const handleMenuOpening = () => setIsMenuOpened(true);
   const handleMenuClosing = () => setIsMenuOpened(false);
@@ -10,8 +11,8 @@ function NavBar({loggedIn}) {
   return (
     <>
       <div className="navbar">
-        <button className="navbar__hamburger-overlay" type="button" onClick={handleMenuOpening}></button>
-
+        <button className={`navbar__hamburger-overlay ${pathname === "/" && 'navbar__hamburger-overlay_type_light'}`} type="button" onClick={handleMenuOpening}></button>
+        
         <section className="navbar__menu">
           <ul className="navbar__menu-list">
             <li className="navbar__menu-list-item">

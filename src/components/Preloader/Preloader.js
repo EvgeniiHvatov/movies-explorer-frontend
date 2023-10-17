@@ -1,14 +1,21 @@
 import React from 'react'
 import './Preloader.css'
+import WarningForm from '../WarningForm/WarningForm'
 
-const Preloader = () => {
-    return (
-        <div className="preloader">
-            <div className="preloader__container">
-                <span className="preloader__round"></span>
+const Preloader = ({loggedIn}) => {
+  return (
+    <>
+      {loggedIn ? 
+        (<div className="preloader">
+          <div className="preloader__container">
+            <span className="preloader__round"></span>
             </div>
-        </div>
-    )
+        </div>)
+        :
+        (<WarningForm></WarningForm>)
+      }
+    </>
+  )
 };
 
-export default Preloader
+export default Preloader;

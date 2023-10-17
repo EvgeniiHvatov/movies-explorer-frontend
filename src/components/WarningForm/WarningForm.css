@@ -1,0 +1,19 @@
+.warning-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 220px auto;
+}
+
+.warning-form__text{
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.21;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .warning-form {
+    margin: 160px auto;
+  }
+}

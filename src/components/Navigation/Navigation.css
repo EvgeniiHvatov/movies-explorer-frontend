@@ -41,6 +41,10 @@
   text-align: right;
 }
 
+.navigation__button_type_black{
+  color: #000;
+}
+
 .navigation__button_signin:hover {
   opacity: .7;
 }
